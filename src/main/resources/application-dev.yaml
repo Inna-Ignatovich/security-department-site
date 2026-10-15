@@ -1,0 +1,41 @@
+spring:
+  application:
+    name: security-department-site
+  threads:
+    virtual:
+      enabled: true
+  datasource:
+    url: jdbc:postgresql://localhost:5432/security-site
+    username: postgres
+    password: root
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+
+site:
+  storage:
+    root: /security-site/storage
+
+logging:
+  file:
+    name: /security-site/logs/security-site.log
+  level:
+    by.belarusbank.deb: DEBUG
+    org.hibernate.SQL: DEBUG
+    org.hibernate.orm.jdbc.bind: TRACE
+    org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod: DEBUG
+    org.springframework.security: info
+    org.springframework.web.client.RestClient: DEBUG
+    com.fasterxml.jackson: TRACE
+
+server:
+  servlet:
+    context-path: /security-site/v1
+  port: 8080
+
+

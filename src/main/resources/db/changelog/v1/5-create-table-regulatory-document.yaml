@@ -1,0 +1,48 @@
+databaseChangeLog:
+  - changeSet:
+      id: 5-create-table-regulatory-document
+      author: i.ignatovich
+      changes:
+        - createTable:
+            tableName: regulatory_document
+            columns:
+              - column:
+                  name: id
+                  type: UUID
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: regulatory_block
+                  type: VARCHAR(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: document_date
+                  type: TIMESTAMPTZ
+              - column:
+                  name: file_id
+                  type: UUID
+                  constraints:
+                    nullable: true
+                    foreignKeyName: fk_rd_file_data
+                    referencedTableName: file_data
+                    referencedColumnNames: id
+                    onDelete: SET NULL
+              - column:
+                  name: created_at
+                  type: TIMESTAMPTZ
+                  defaultValueComputed: CURRENT_TIMESTAMP
+                  constraints:
+                    nullable: false
+        - createIndex:
+            indexName: idx_regulatory_block
+            tableName: regulatory_document
+            columns:
+              - column:
+                  name: regulatory_block

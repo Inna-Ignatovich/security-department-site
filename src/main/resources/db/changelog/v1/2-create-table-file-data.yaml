@@ -1,0 +1,39 @@
+databaseChangeLog:
+  - changeSet:
+      id: 2-create-table-file-data
+      author: i.ignatovich
+      changes:
+        - createTable:
+            tableName: file_data
+            columns:
+              - column:
+                  name: id
+                  type: UUID
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: original_name
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: storage_path
+                  type: VARCHAR(1000)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: mime_type
+                  type: VARCHAR(100)
+              - column:
+                  name: size
+                  type: BIGINT
+              - column:
+                  name: file_category
+                  type: VARCHAR(50)
+              - column:
+                  name: created_at
+                  type: TIMESTAMPTZ
+                  defaultValueComputed: CURRENT_TIMESTAMP
+                  constraints:
+                    nullable: false

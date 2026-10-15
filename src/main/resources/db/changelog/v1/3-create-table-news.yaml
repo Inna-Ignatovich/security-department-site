@@ -1,0 +1,74 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1-create-table-news
+      author: i.ignatovich
+      changes:
+        - createTable:
+            tableName: news
+            columns:
+              - column:
+                  name: id
+                  type: UUID
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: title
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: description
+                  type: VARCHAR(500)
+              - column:
+                  name: publish_date
+                  type: TIMESTAMPTZ
+                  constraints:
+                    nullable: false
+              - column:
+                  name: category_id
+                  type: UUID
+                  constraints:
+                    foreignKeyName: fk_news_category
+                    referencedTableName: news_category
+                    referencedColumnNames: id
+              - column:
+                  name: image_file_id
+                  type: UUID
+                  constraints:
+                    nullable: true
+                    foreignKeyName: fk_news_file_data
+                    referencedTableName: file_data
+                    referencedColumnNames: id
+                    onDelete: SET NULL
+              - column:
+                  name: content_html
+                  type: TEXT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: is_featured
+                  type: boolean
+              - column:
+                  name: created_at
+                  type: TIMESTAMPTZ
+                  defaultValueComputed: CURRENT_TIMESTAMP
+                  constraints:
+                    nullable: false
+              - column:
+                  name: updated_at
+                  type: TIMESTAMPTZ
+                  defaultValueComputed: CURRENT_TIMESTAMP
+        - createIndex:
+            indexName: idx_news_featured_date_id
+            tableName: news
+            columns:
+              - column:
+                  name: is_featured
+                  descending: true
+              - column:
+                  name: publish_date
+                  descending: true
+              - column:
+                  name: id
+                  descending: true

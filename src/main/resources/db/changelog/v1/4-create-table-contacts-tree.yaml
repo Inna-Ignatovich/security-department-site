@@ -1,0 +1,26 @@
+databaseChangeLog:
+  - changeSet:
+      id: 4-create-table-contacts-tree
+      author: i.ignatovich
+      changes:
+        - createTable:
+            tableName: contacts_tree
+            columns:
+              - column:
+                  name: id
+                  type: VARCHAR(50)
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: data
+                  type: JSONB
+              - column:
+                  name: updated_at
+                  type: TIMESTAMPTZ
+                  defaultValueComputed: CURRENT_TIMESTAMP
+                  constraints:
+                    nullable: false
+              - column:
+                  name: updated_by
+                  type: VARCHAR(255)

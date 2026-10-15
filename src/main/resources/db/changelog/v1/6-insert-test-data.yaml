@@ -1,0 +1,198 @@
+databaseChangeLog:
+  - changeSet:
+      id: 6-insert-test-data-1
+      author: i.ignatovich
+      changes:
+        - insert:
+            tableName: news_category
+            columns:
+              - column:
+                  name: id
+                  value: "01a13e14-404a-7556-b0d2-6983edcd38b0"
+              - column:
+                  name: name
+                  value: "События"
+        - insert:
+            tableName: news_category
+            columns:
+              - column:
+                  name: id
+                  value: "01a13e14-7e9c-769d-b859-7e80344db76b"
+              - column:
+                  name: name
+                  value: "Законодательство"
+  - changeSet:
+      id: 6-insert-test-data-2
+      author: i.ignatovich
+      changes:
+        - insert:
+            tableName: news
+            columns:
+              - column:
+                  name: id
+                  value: "a1b2c3d4-e5f6-7a8b-9c0d-1e2f3a4b5c6d"
+              - column:
+                  name: title
+                  value: "Тестовая новость 1"
+              - column:
+                  name: description
+                  value: "Краткое описание тестовой новости 1"
+              - column:
+                  name: publish_date
+                  value: "2026-10-15T08:00:00Z"
+              - column:
+                  name: category_id
+                  value: "01a13e14-404a-7556-b0d2-6983edcd38b0"
+              - column:
+                  name: image_file_id
+                  value: null
+              - column:
+                  name: content_html
+                  value: "<h1>Контент</h1>"
+              - column:
+                  name: is_featured
+                  valueBoolean: true
+              - column:
+                  name: created_at
+                  value: "2026-10-15T08:30:00Z"
+              - column:
+                  name: updated_at
+                  value: "2026-10-15T08:30:00Z"
+
+        - insert:
+            tableName: news
+            columns:
+              - column:
+                  name: id
+                  value: "f8e7d6c5-b4a3-2f1e-0d9c-8b7a6f5e4d3c"
+              - column:
+                  name: title
+                  value: "Тестовая новость 2"
+              - column:
+                  name: description
+                  value: "Краткое описание тестовой новости 2"
+              - column:
+                  name: publish_date
+                  value: "2026-10-14T12:00:00Z"
+              - column:
+                  name: category_id
+                  value: "01a13e14-7e9c-769d-b859-7e80344db76b"
+              - column:
+                  name: image_file_id
+                  value: null
+              - column:
+                  name: content_html
+                  value: "<p>Контент</p>"
+              - column:
+                  name: is_featured
+                  valueBoolean: false
+              - column:
+                  name: created_at
+                  value: "2026-10-14T12:00:00Z"
+  - changeSet:
+      id: 6-insert-test-data-3
+      author: i.ignatovich
+      changes:
+        - insert:
+            tableName: contacts_tree
+            columns:
+              - column:
+                  name: id
+                  value: "contacts"
+              - column:
+                  name: updated_at
+                  value: "2026-10-15T09:00:00Z"
+              - column:
+                  name: updated_by
+                  value: "i.ignatovich"
+              - column:
+                  name: data
+                  value: >
+                    {
+                        "id": "id-dep",
+                        "label": "Департамент безопасности",
+                        "people": [],
+                        "children": [
+                            {
+                                "id": "id-mgmt",
+                                "label": "Руководство",
+                                "people": [
+                                    {
+                                        "id": "id-dir",
+                                        "phone": "(017)2000000",
+                                        "office": "1",
+                                        "address": "220000, Республика Беларусь, г. Минск, пр. Дзержинского, 1",
+                                        "fullName": "Иванов Андрей Петрович",
+                                        "isLeader": true,
+                                        "position": "Директор департамента",
+                                        "personCode": "dir"
+                                    },
+                                    {
+                                        "id": "id-dep-dir",
+                                        "phone": "(017)2000001",
+                                        "office": "2",
+                                        "address": "220000, Республика Беларусь, г. Минск, пр. Дзержинского, 1",
+                                        "fullName": "Петрова Елена Сергеевна",
+                                        "isLeader": true,
+                                        "position": "Заместитель директора",
+                                        "personCode": "dep_dir"
+                                    }
+                                ],
+                                "children": []
+                            },
+                            {
+                                "id": "id-dep-1",
+                                "label": "Управление экономической безопасности",
+                                "people": [
+                                    {
+                                        "id": "id-spec-1",
+                                        "phone": "(017)2000015",
+                                        "office": "12",
+                                        "address": "220000, Республика Беларусь, г. Минск, пр. Дзержинского, 1",
+                                        "fullName": "Сидоров Максим Николаевич",
+                                        "isLeader": false,
+                                        "position": "Главный специалист",
+                                        "personCode": "spec-1"
+                                    },
+                                    {
+                                        "id": "id-lead-1",
+                                        "phone": "(017)2000024",
+                                        "office": "15",
+                                        "address": "220000, Республика Беларусь, г. Минск, пр. Дзержинского, 1",
+                                        "fullName": "Васильев Дмитрий Олегович",
+                                        "isLeader": true,
+                                        "position": "Начальник управления",
+                                        "personCode": "lead-1"
+                                    }
+                                ],
+                                "children": []
+                            },
+                            {
+                                "id": "id-dep-2",
+                                "label": "Управление цифровой безопасности",
+                                "people": [
+                                     {
+                                        "id": "id-spec-2",
+                                        "phone": "(017)2000019",
+                                        "office": "17",
+                                        "address": "220000, Республика Беларусь, г. Минск, пр. Дзержинского, 1",
+                                        "fullName": "Бирюкович Федор Николаевич",
+                                        "isLeader": false,
+                                        "position": "Главный специалист",
+                                        "personCode": "spec-2"
+                                    },
+                                    {
+                                        "id": "id-lead-2",
+                                        "phone": "(017)2000054",
+                                        "office": "24",
+                                        "address": "220000, Республика Беларусь, г. Минск, пр. Дзержинского, 1",
+                                        "fullName": "Кириллов Дмитрий Георгиевич",
+                                        "isLeader": true,
+                                        "position": "Начальник управления",
+                                        "personCode": "lead-2"
+                                    }
+                                ],
+                                "children": []            
+                            }
+                        ]    
+                    }
